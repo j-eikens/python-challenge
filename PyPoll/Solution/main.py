@@ -7,7 +7,8 @@ candidates = []
 county = []
 ballot_ID = []
 
-secondrow = []
+totalvotes = []
+percentagevotes = []
 
 with open(csvpath) as csvfile:
     
@@ -15,83 +16,50 @@ with open(csvpath) as csvfile:
 
     csv_header = next(election_data)
 
-#----------------------------------------------------------------------
-    #unique value function - this will print all result three times
-    # def unique1(list):
-        
-    #     unique_candidates = []
-            
-    #     for candidate in candidates:
-
-    #         if candidate not in unique_candidates:
-    #             unique_candidates.append(candidate)
-        
-    #     for candidate in unique_candidates:
-    #         print(unique_candidates)
-
-#----------------------------------------------------------------------
-    # def unique1(list1):
-
-    #     list_set = set(list1)
-
-    #     unique_list = (list(list_set))
-
-    #     print(unique_list)
-
-    #     return unique_list
-
-#----------------------------------------------------------------------
-# appending rows to variables. This works.
-
+# appending rows to variables.
     for row in election_data:
 
         candidates.append(row[2])
         county.append(row[1])
         ballot_ID.append(row[0])
 
-        # if candidates == str(unique_list[0]):
-        #     total += row
-        #     print (total)
-
-#---------------------------------------------------------------------
-
+          
     #find unique candidates
     list_set = set(candidates)
 
     unique_list = (list(list_set))
 
-    print(unique_list)
-#-------------------------------------------------------------------------
-#trying to count votes for candidates (not working)
-    # total = 0  
 
-    # for row in election_data:
+    #search for 
+    counter = 0
 
-    #     total = 0
+    for row in unique_list: 
 
-    #     if candidates == str(unique_list[0]):
-    #         total += row  
-    #         print (total)
-    # print(total)
+        for candidate in candidates:
 
-#------------------------------------------------------------------------  
-#total votes - this works
-  
-    # number of ballots cast
-    print(len(ballot_ID))
+            if candidate == row:
 
-#------------------------------------------------------------------------
-#this will count all the times Diana is input. Can I feed a list into the input???
+                counter += 1
 
-    # #returns number of times
-    # from collections import Counter
+        totalvotes.append(counter)
+        percentagevotes.append(str(round(counter / len(ballot_ID) * 100, 3)) + "%")
+    
+        counter = 0
 
-    # list = candidates
 
-    # x = "Diana DeGette"
-    # d = Counter(list)
+    #create dictionary
+    dictionary = {"Candidate": unique_list, "Total Votes": totalvotes, "Percentage Votes": percentagevotes}
+      
+    print("---------------------")
 
-    # print('{} has occured {}times'.format(x, d[x]))
+    #Find who is has the most votes
+    for element in range(len(dictionary["Total Votes"]):
+
+        if element > most votes
+
+
+
+
 
 
 

@@ -49,13 +49,36 @@ with open(csvpath) as csvfile:
 
     #create dictionary
     dictionary = {"Candidate": unique_list, "Total Votes": totalvotes, "Percentage Votes": percentagevotes}
-      
+
+    print(dictionary)  
     print("---------------------")
+    
+    # print(len(dictionary["Total Votes"]))
 
     #Find who is has the most votes
-    for element in range(len(dictionary["Total Votes"]):
+    mostvotes = 0
+    
+    for element in range(len(dictionary["Total Votes"])):  
+        
+        #print(element)
 
-        if element > most votes
+        if element > mostvotes:
+
+            mostvotes = element
+            #print(element)
+
+
+    # for element in dictionary["Total Votes"]:  
+        
+    #     print(element)
+
+    #     if element > mostvotes:
+
+    #         mostvotes = element
+
+    print('----------')  
+    print(element)      
+    print(mostvotes)
 
 
 

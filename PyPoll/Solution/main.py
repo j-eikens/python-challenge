@@ -3,23 +3,12 @@ import csv
 
 csvpath = os.path.join('..', 'Resources', 'election_data.csv')
 
-#variables for approach 1
+
 candidates = []
 county = []
 ballot_ID = []
-
 totalvotes = []
 percentagevotes = []
-
-# #variables for approach 2
-# candidates = []
-# county = []
-# ballot_ID = []
-
-# total_vote = []
-# percent_vote = []
-
-# unique_candidates = []
 
 
 with open(csvpath) as csvfile:
@@ -28,71 +17,15 @@ with open(csvpath) as csvfile:
 
     csv_header = next(election_data)
 
-
-#--------------------------------------------------------------------------
-#approach 2
-
-#     votes = 0
-
-#     for row in election_data:
-
-#         votes += 1
-
-#         candidates.append(row[2])
-#         county.append(row[1])
-#         ballot_ID.append(row[0])
-
-#     #find unique candidates
-#     for candidate in candidates:
-        
-#         if candidate not in unique_candidates:
-            
-#             unique_candidates.append(candidate)
-
-    
-#     resultsdictionary = (unique_candidates)
-
-#     print(resultsdictionary)
-    
-
-
-#     # count = 1
-#     # #count votes for each candidate
-#     # for candidate in unique_candidates:
-
-#     #     if unique_candidates.value == candidates:
-
-#     #         count += 1
-
-#     # print(unique_candidates)
-#     # print(count)
-
-
-
-# #Results
-# print('Election Results')
-# print('------------------------')
-# print(f'Total Votes: {votes}')
-
-#-------------------------------------------------------------------------
-
-
-
-# approach 1 - more complex???
-
 # appending rows to variables.
     for row in election_data:
 
         candidates.append(row[2])
-        county.append(row[1])
-        ballot_ID.append(row[0])
-
           
     #find unique candidates
     list_set = set(candidates)
 
     unique_list = (list(list_set))
-
 
     #find instances of unique candidates - BSC claims there is an easier way 
     counter = 0
@@ -106,17 +39,13 @@ with open(csvpath) as csvfile:
                 counter += 1
 
         totalvotes.append(counter)
-        percentagevotes.append(str(round(counter / len(ballot_ID) * 100, 3)) + "%")
+        percentagevotes.append(str(round(counter / len(candidates) * 100, 3)) + "%")
     
         counter = 0
 
 
     #create dictionary
     dictionary = {"Candidate": unique_list, "Total Votes": totalvotes, "Percentage Votes": percentagevotes}
-
-    #trying to create different dictionary
-    dictionary2 = {"Charles Casper Stockham:": totalvotes[1], "Total Votes" : totalvotes}
-
  
     #Find who is has the most votes
     mostvotes = 0
@@ -124,14 +53,10 @@ with open(csvpath) as csvfile:
     #This returns maximum votes
     for element in dictionary["Total Votes"]:  
         
-        #print(element)
-
         if element > mostvotes:
 
             mostvotes = element
-            #print(mostvotes)
-
-
+ 
     #Finds winner
     index = totalvotes.index(mostvotes)
 
@@ -149,11 +74,23 @@ with open(csvpath) as csvfile:
     print(f'Winner:  {winner}')
     print('----------------------------')
 
-    # for key, value in dictionary.items():
-    #     print(key, ":", value)
+export_file = os.path.join("..","analysis","PyPoll_Results.txt")
+with open (export_file, 'w') as txt_file:
+    txt_file.write(
+    f'Election Results\n'
+    f'Election Results\n'
+    f'----------------------------\n'
+    f'Total Votes: {mostvotes}\n'
+    f'----------------------------\n'
+    
 
-    #print(dictionary2)
+    f"{dictionary['Candidate'][0]}: {dictionary['Percentage Votes'][0]} ({dictionary['Total Votes'][0]})\n"
+    f"{dictionary['Candidate'][1]}: {dictionary['Percentage Votes'][1]} ({dictionary['Total Votes'][1]})\n"
+    f"{dictionary['Candidate'][2]}: {dictionary['Percentage Votes'][2]} ({dictionary['Total Votes'][2]})\n"
 
+    f'----------------------------\n'
+    f'Winner:  {winner}\n'
+    f'----------------------------')
 
 
 

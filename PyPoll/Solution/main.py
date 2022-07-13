@@ -141,7 +141,10 @@ with open(csvpath) as csvfile:
     print('----------------------------')
     print(f'Total Votes: {mostvotes}')
     print('----------------------------')
-    print(dictionary)
+    
+    for i in range(3):
+        print(f"{dictionary['Candidate'][i]}: {dictionary['Percentage Votes'][i]} ({dictionary['Total Votes'][i]})")
+
     print('----------------------------')
     print(f'Winner:  {winner}')
     print('----------------------------')
@@ -149,7 +152,7 @@ with open(csvpath) as csvfile:
     # for key, value in dictionary.items():
     #     print(key, ":", value)
 
-    print(dictionary2)
+    #print(dictionary2)
 
 
 

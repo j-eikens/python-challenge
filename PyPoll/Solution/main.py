@@ -78,7 +78,6 @@ export_file = os.path.join("..","analysis","PyPoll_Results.txt")
 with open (export_file, 'w') as txt_file:
     txt_file.write(
     f'Election Results\n'
-    f'Election Results\n'
     f'----------------------------\n'
     f'Total Votes: {mostvotes}\n'
     f'----------------------------\n'
